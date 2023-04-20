@@ -3,7 +3,7 @@ first.py
 yt.py
 yt1.py
 *.exe
-
+i_*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
