@@ -13,7 +13,8 @@ def show_images_labels_predictions(images,labels,predictions,start_id,num=10,lat
         ax=plt.subplot(3,4, i+1)
         ax.imshow(images[start_id], cmap='binary') 
         if( len(predictions) > 0 ) :
-            title = 'model ai = ' + str(predictions[start_id])        
+            title = 'model_name : ' + str(model_name)
+            title += ' model ai = ' + str(predictions[start_id])        
             title += (' (o)' if predictions[start_id]==labels[start_id] else ' (x)')
             title += '\nlabel = ' + str(labels[start_id])
             title +=' latency = ' +str(latency)+' ms'
@@ -49,10 +50,11 @@ output_details = interpreter.get_output_details()
 
 interpreter.set_tensor(input_details[0]["index"], test_feature_normalize)
 t1 = timeit.default_timer()
-interpreter.invoke()
+for x in range(100):
+    interpreter.invoke()
 t2 = timeit.default_timer()
 prediction = interpreter.get_tensor(output_details[0]["index"])
-t = round(1000 * (t2 - t1), 2)
+t = round(1000 * (t2 - t1), 2)/100
 
 prediction=np.argmax(prediction,axis=1)
 show_images_labels_predictions(test_feature,test_label,prediction,0,len(test_feature),t)

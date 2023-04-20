@@ -17,7 +17,7 @@ test_images =np.expand_dims(test_images,-1)
 train_labels = keras.utils.to_categorical(train_labels,10)
 test_labels = keras.utils.to_categorical(test_labels,10)
 
-batch_size = 200
+batch_size = 300
 epochs = 10
 validation_split = 0.1 
 
