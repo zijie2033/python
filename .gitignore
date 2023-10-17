@@ -4,7 +4,8 @@ yt.py
 yt1.py
 *.exe
 i_*
-
+dataset
+inference_data
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
